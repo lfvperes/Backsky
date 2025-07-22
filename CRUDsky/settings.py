@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_filters',
     'bsky_cidades',
 ]
 
@@ -88,7 +89,7 @@ DATABASES = {
         # This ensures all connections are secure SSL connections
         # when connecting to a remote database.
         conn_max_age=600,
-        ssl_require=True
+        ssl_require=False
     )
 }
 
@@ -132,3 +133,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 APPEND_SLASH = False
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ]
+}
