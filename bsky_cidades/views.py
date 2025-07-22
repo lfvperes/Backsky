@@ -1,9 +1,13 @@
 from django.http import HttpRequest, JsonResponse
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import City
+from .serializers import CitySerializer
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 # Create your views here.
 
-def random_city_data(request: HttpRequest):
+def example(request: HttpRequest):
     city = {
         'id': 1720002,
         'name': 'Santa Terezinha do Tocantins',
@@ -12,3 +16,19 @@ def random_city_data(request: HttpRequest):
         'used': False
     }
     return JsonResponse(city)
+
+
+class GetCityData(viewsets.ModelViewSet):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+
+@api_view(['GET'])
+def randomize(request: HttpRequest):
+    """
+    Selects and returns a random city from the database.
+    """
+    random_city = City.objects.order_by('?').first()
+    if random_city:
+        serializer = CitySerializer(random_city)
+        return Response(serializer.data)
+    return Response({"error": "No cities in database"}, status=404)

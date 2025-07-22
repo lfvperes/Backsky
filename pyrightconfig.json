@@ -1,0 +1,10 @@
+{
+	"include": [
+		"bsky_cidades",
+		"bsky_misc",
+		"bsky_twilight"
+	],
+	"exclude": [
+		"**/__pycache__"
+	]
+}
