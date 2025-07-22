@@ -4,3 +4,4 @@ bsky_twilight/
 __pycache__/
 dev_requirements.txt
 example.json
+db.sqlite3
