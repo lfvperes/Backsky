@@ -17,7 +17,6 @@ Including another URLconf
 from django.contrib import admin
 from django.http import JsonResponse
 from django.urls import path
-import staticfiles
 
 from bsky_cidades.views import random_city_data
 
