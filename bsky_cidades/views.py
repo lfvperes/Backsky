@@ -1,7 +1,8 @@
 from django.http import HttpRequest, JsonResponse
 from rest_framework import viewsets
 from .models import City
-from .serializers import CitySerializer
+from .serializers import CitySerializer, CityRetrieveSerializer, CityCreateSerializer
+from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -20,7 +21,13 @@ def example(request: HttpRequest):
 
 class GetCityData(viewsets.ModelViewSet):
     queryset = City.objects.all()
-    serializer_class = CitySerializer
+    # serializer_class = CitySerializer
+    def get_serializer_class(self):
+        # Return a custom serializer
+        if self.action in ['list','retrieve']:
+            return CityRetrieveSerializer
+        else:
+            return CityCreateSerializer
 
 @api_view(['GET'])
 def randomize(request: HttpRequest):
@@ -29,6 +36,6 @@ def randomize(request: HttpRequest):
     """
     random_city = City.objects.order_by('?').first()
     if random_city:
-        serializer = CitySerializer(random_city)
+        serializer = CityRetrieveSerializer(random_city)
         return Response(serializer.data)
     return Response({"error": "No cities in database"}, status=404)
