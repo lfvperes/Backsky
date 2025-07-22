@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -79,10 +80,16 @@ WSGI_APPLICATION = 'CRUDsky.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        # This is the fallback. It will be used if a DATABASE_URL
+        # environment variable is NOT found.
+        default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}",
+
+        # This ensures all connections are secure SSL connections
+        # when connecting to a remote database.
+        conn_max_age=600,
+        ssl_require=True
+    )
 }
 
 # Password validation
