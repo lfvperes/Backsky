@@ -6,7 +6,7 @@ class CityFilter(filters.FilterSet):
 
     class Meta:
         model = City
-        fields = ['state', 'used', 'id'] 
+        fields = ['state', 'used', 'id', 'name'] 
 
     def filter_by_state_code(self, queryset, name, value):
         """

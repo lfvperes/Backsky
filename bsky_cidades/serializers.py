@@ -16,4 +16,4 @@ class CityCreateSerializer(serializers.ModelSerializer):
 class CityRetrieveSerializer(serializers.ModelSerializer):
     class Meta:
         model = City
-        fields = ['name','est_pop', 'gentilic','state']
+        fields = ['id','name','est_pop', 'gentilic','state']

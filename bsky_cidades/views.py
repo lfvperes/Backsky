@@ -74,5 +74,5 @@ def randomize(request: HttpRequest):
             random_city.save()
 
         # Return the final state of the city.
-        serializer = CityCreateSerializer(random_city)
+        serializer = CityRetrieveSerializer(random_city)
         return Response(serializer.data)
