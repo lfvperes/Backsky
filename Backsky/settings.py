@@ -57,7 +57,7 @@ MIDDLEWARE = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-ROOT_URLCONF = 'CRUDsky.urls'
+ROOT_URLCONF = 'Backsky.urls'
 
 TEMPLATES = [
     {
@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'CRUDsky.wsgi.application'
+WSGI_APPLICATION = 'Backsky.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -139,3 +139,7 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend'
     ]
 }
+
+
+
+
