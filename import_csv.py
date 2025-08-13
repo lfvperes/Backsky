@@ -1,7 +1,7 @@
 import os
 import django
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CRUDsky.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Backsky.settings')
 django.setup()
 
 import csv
