@@ -62,7 +62,7 @@ CORS_ALLOWED_ORIGINS = [
     # This is the default Vite development server URL
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://lfvperes.github.io/Backsky/"
+    "https://lfvperes.github.io"
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
