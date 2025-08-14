@@ -28,25 +28,24 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          # Add this line to cache dependencies for the frontend folder
           cache-dependency-path: frontend/package-lock.json
 
       - name: Install dependencies
-        # Use working-directory to run commands in the subfolder
         run: npm install
         working-directory: ./frontend
 
       - name: Build
         run: npm run build
         working-directory: ./frontend
+        env:
+          VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Update the path to the built output
-          path: './frontend/dist'
+          path: ./frontend/dist
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
