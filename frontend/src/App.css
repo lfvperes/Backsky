@@ -1,42 +1,151 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Basic reset/defaults */
+body {
+  font-family: sans-serif;
+  margin: 20px;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+
+hr.section-divider {
+  border: 0;
+  height: 1px;
+  background-color: #ccc;
+  margin: 40px 0;
+}
+
+/* Container for the two main sections (search and random) */
+.controls-container {
+  display: flex; /* Use Flexbox */
+  flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+  gap: 30px; /* Space between the sections */
+  justify-content: center; /* Center items horizontally */
+  margin-bottom: 30px;
+}
+
+/* Styling for the search section */
+.search-section {
+  flex: 1; /* Allows this section to grow and shrink */
+  min-width: 280px; /* Minimum width before wrapping */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Stack form elements vertically */
+  align-items: center; /* Center form elements */
+}
+
+.search-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items WITHIN the form */
+  width: 100%; /* Make form take full width of its container */
+}
+
+.search-section form div {
+  margin-bottom: 15px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-section form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  display: block; /* Ensure label takes its own line */
+}
+
+.search-section form input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: calc(100% - 22px); /* Adjust for padding and border */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.search-section button[type="submit"] {
+  margin-top: 10px; /* Add some space above the button */
+  padding: 10px 20px;
+  background-color: #3498db; /* Changed to match random button for consistency, or keep it distinct */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: auto; /* Let button size itself */
+}
+
+.search-section button[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+.search-section .clear-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #e74c3c; /* Reddish color for clear */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-section .clear-button:hover {
+  background-color: #c0392b;
+}
+/* Styling for the random city section */
+.random-city-section {
+  flex: 1; /* Allows this section to grow and shrink */
+  min-width: 280px; /* Minimum width before wrapping */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center elements */
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.random-city-section button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3498db; /* Blue color for random button */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.random-city-section button:hover {
+  background-color: #2980b9;
+}
+
+/* Styling for the results section (DataReader) */
+/* We'll apply styles directly to DataReader's content for simplicity */
+/* If DataReader had a container div with a class, we'd style that */
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) { /* Adjust breakpoint as needed */
+  .controls-container {
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center; /* Center items when stacked */
   }
-  to {
-    transform: rotate(360deg);
+
+  .search-section,
+  .random-city-section {
+    width: 90%; /* Make sections take up most of the width on mobile */
+    min-width: unset; /* Remove minimum width */
+    margin-bottom: 20px; /* Add some space below stacked sections */
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
